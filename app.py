@@ -68,7 +68,7 @@ while True:
     prompt += "Project Title:\nCreate a compelling title for the project.\nProject Description:\nProvide a detailed description outlining the purpose, functionality, and goals of the project.\nTechnologies to Use:\nList a tech stack based on the project category. Provide a detailed list of the tech stacks.\nFeatures:\nEnumerate key features aligning with the project's goals. Give the feature title and description and do not include any numbering in the features.\nTimeFrame:\nDefine an estimated timeframe for project completion, considering the scope and complexity."
 
     
-    response = client.chat.completions.create(
+    response = client.Chat.completions.create(
             model='gpt-4',
             messages=[{"role": "user", "content": prompt}],
             max_tokens=700,
