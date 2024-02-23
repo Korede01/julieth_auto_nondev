@@ -1,0 +1,34 @@
+name: Auto
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  DEFAULT_BRANCH: main
+  OPENAI_API_KEY: ${{ secrets.OPENAI_API }}
+  mongoclient: ${{ secrets.MONGOCLIENT }}
+  db: ${{ secrets.DATABASE }}
+  collection: ${{ secrets.COLLECTION }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.x
+
+    - name: Install dependencies
+      run: |
+        pip install openai pymongo python_dotenv
+
+    - name: Run auto
+      run: |
+        python ./app.py
